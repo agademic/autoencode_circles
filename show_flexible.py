@@ -48,27 +48,6 @@ trained_model = autoencoder.fit(train_arr, train_arr, batch_size=32, epochs=200,
 
 decoded_output = autoencoder.predict(train_arr)        # reconstruction
 
-plt.imshow(decoded_output[8].reshape(30,30))
-plt.imshow(train_arr[8].reshape(30,30))
-
-test = np.zeros((30,30))
-test[10:20,10:20] = 1
-test = test.flatten()
-test = test.reshape(1,900)
-plt.imshow(test.reshape(30,30))
-
-decoded_rect = autoencoder.predict(test)
-plt.imshow(decoded_rect.reshape(30,30))
-
-test = np.zeros((30,30))
-test[5:25,5:25] = 1
-test = test.flatten()
-test = test.reshape(1,900)
-plt.imshow(test.reshape(30,30))
-
-decoded_rect = autoencoder.predict(test)
-plt.imshow(decoded_rect.reshape(30,30))
-
 
 n = 5  
 plt.figure(figsize=(10, 4))
@@ -110,25 +89,6 @@ for i in range(n):
 plt.show()
 
 
-##### TEST SQUARE #####
-test = np.zeros((30,30))
-test[10:20,10:20] = 1
-test = test.flatten()
-test = test.reshape(1,900)
-plt.imshow(test.reshape(30,30))
-
-decoded_test1 = autoencoder.predict(test)
-plt.imshow(decoded_test1.reshape(30,30))
-
-
-##### PRINT PREDICTIONS AFTER EPOCH #####
-
-print(predictions.predhis)
-type(predictions.predhis)
-predictions.predhis[0].shape
-predictions.predhis[1].shape
-
-
 n = 10
 plt.figure(figsize=(10, 5))
 for i in range(n):
@@ -136,13 +96,6 @@ for i in range(n):
     ax = plt.subplot(2, n, i + 1 + n)
     plt.imshow(predictions.predhis[i][0].reshape(res, res))
     plt.gray()
-    ax.get_xaxis().set_visible(False)
-    ax.get_yaxis().set_visible(False)
-plt.show()
-
-for i in range(1, 21):
-    ax = plt.subplot(2, 10, i)
-    plt.imshow(predictions.predhis[i][0].reshape(res, res))
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
 plt.show()
